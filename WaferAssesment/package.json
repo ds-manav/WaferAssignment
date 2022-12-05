@@ -1,0 +1,33 @@
+{
+  "name": "waferassesment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "make-seeds": "npx knex seed:make dev_seed --knexfile ./db/knexfile.js",
+    "migrate": "npx knex migrate:up --knexfile ./db/knexfile.js",
+    "seed": "npx knex seed:run --knexfile ./db/knexfile.js",
+    "dev": "npm run migrate && nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "aws-sdk": "^2.1264.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "knex": "^2.3.0",
+    "nodemailer": "^6.8.0",
+    "objection": "^3.0.1",
+    "otp-generator": "^4.0.0",
+    "pg": "^8.8.0",
+    "react-scripts": "^5.0.1",
+    "twilio": "^3.83.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "proxy":"http://localhost:8000"
+}

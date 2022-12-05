@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    # volumes:
+    #   - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgre
+  
+  node_app:
+    build:
+      context: .
+      dockerfile: ./WaferAssesment/Dockerfile
+    environment:
+      NODE_ENV : development
+    # volumes:
+      # - .:/usr/src/app
+      # - /node_modules
+    command: /usr/src/app/entrypoint.sh
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  react_app:
+    build:
+      context: .
+      dockerfile: ./waferfrontend/Dockerfile
+    environment:
+      NODE_ENV : development
+    # volumes:
+      # - .:/usr/src/app
+      # - /node_modules
+    command: /usr/src/react/entrypoint.sh
+    ports:
+      - 3000:3000
